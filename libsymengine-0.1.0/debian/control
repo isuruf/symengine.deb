@@ -1,0 +1,16 @@
+Source: libsymengine
+Priority: optional
+Maintainer: Isuru Fernando <isuruf@gmail.com>
+Build-Depends: debhelper (>= 9), cmake, libgmp-dev, libmpfr-dev, libmpc-dev, cdbs
+Standards-Version: 3.9.6
+Section: libs
+Homepage: https://github.com/symengine/symengine
+Vcs-Git: git://github.com/symengine/symengine.git
+Vcs-Browser: https://github.com/symengine/symengine
+
+Package: libsymengine-dev
+Section: libdevel
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libgmp-dev, libmpfr-dev, libmpc-dev
+Description: SymEngine is a standalone fast C++ symbolic manipulation library.
+
