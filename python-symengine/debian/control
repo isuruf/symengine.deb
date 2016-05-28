@@ -1,0 +1,22 @@
+Source: python-symengine
+Priority: optional
+Maintainer: Isuru Fernando <isuruf@gmail.com>
+Build-Depends: debhelper (>= 9), cmake, python-all (>= 2.7), python-setuptools, python-dev, python3-all (>= 3.2), python3-setuptools, python3-dev, libsymengine-dev, cython, dh-python
+Standards-Version: 3.9.6
+Section: libs
+Homepage: https://github.com/symengine/symengine.py
+Vcs-Git: git://github.com/symengine/symengine.py.git
+Vcs-Browser: https://github.com/symengine/symengine.py
+
+Package: python-symengine
+Section: python
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, python (>= 2.7), libsymengine-dev, python-sympy
+Description: Python2 wrappers for SymEngine, a standalone fast C++ symbolic manipulation library.
+
+Package: python3-symengine
+Section: python
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, python3 (>= 3.2), libsymengine-dev, python3-sympy
+Description: Python3 wrappers for SymEngine, a standalone fast C++ symbolic manipulation library.
+

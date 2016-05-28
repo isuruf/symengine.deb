@@ -1,4 +1,4 @@
-libsymengine (version) dist; urgency=medium
+python-symengine (version) dist; urgency=medium
 
   * Initial release.
 
