@@ -1,1 +1,3 @@
 *.orig.tar.gz 
+libsymengine-*
+libsymengine_*
