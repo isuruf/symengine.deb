@@ -1,4 +1,4 @@
-libsymengine (0.1.0-build_num) dist; urgency=medium
+libsymengine (version-build_num) dist; urgency=medium
 
   * Initial release.
 

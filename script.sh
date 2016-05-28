@@ -1,6 +1,6 @@
 #! /bin/bash
 
-version=0.1.0
+version=0.1.0-ubuntu0
 build=0
 
 cd ../symengine
@@ -14,8 +14,7 @@ do
     ls -l
     cp -r libsymengine libsymengine-${version}
     cd libsymengine-${version}
-    sed -i 's/dist/'${dist}'/g' debian/changelog
-    sed -i 's/build_num/'${dist}${build}'/g' debian/changelog
+    sed -i 's:libsymengine (version-build_num) dist:libsymengine ('${version}'-'${dist}${build_num}') '${dist}':g' debian/changelog
     if [ "$dist" == "precise" ]; then
         sed -i 's/cmake,/cmake, g++-4.8,/g' debian/control
         sed -i '6iDEB_CONFIGURE_SCRIPT_ENV += CC=gcc-4.8' debian/rules
