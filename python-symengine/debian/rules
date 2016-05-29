@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
-
-export PYBUILD_NAME = symengine
+export PYBUILD_SYSTEM=distutils
+export PYBUILD_NAME=symengine
 
 %:
 
-	dh $@ --with python2,python3
+	dh $@ --with python2,python3 --buildsystem=pybuild
