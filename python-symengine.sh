@@ -17,12 +17,6 @@ do
     cd python-symengine-${version}
     cp ../../symengine.py/setup.py setup.py
     sed -i 's:python-symengine (version) dist:python-symengine ('${version}'-'${dist}${build}') '${dist}':g' debian/changelog
-    if [ "$dist" == "precise" ]; then
-        TAB=$'\t'
-        sed -i 's/cmake,/cmake, g++-4.8,/g' debian/control
-        sed -i '6i\\texport CC=gcc-4.8' debian/rules
-        sed -i '7i\\texport CXX=g++-4.8' debian/rules
-    fi
     debuild -S -sa
     cd ..
     dput ppa:isuruf/symengine python-symengine_${version}-${dist}${build}_source.changes 
