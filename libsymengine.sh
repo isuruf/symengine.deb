@@ -1,9 +1,16 @@
 #! /bin/bash
 
-version=0.1.0-ubuntu0
-build=1
+build=0
 
 cd ../symengine
+git_ver=`git describe --tags`
+echo $git_ver
+if [[ $git_ver == "v"* ]]
+then
+  git_ver=${git_ver:1};
+fi
+
+version=$git_ver-ubuntu0
 tar -zcvf libsymengine_${version}.orig.tar.gz --exclude=".*" --exclude="benchmarks" --exclude="symengine/utilities/teuchos" *
 cd ../symengine.deb
 mv ../symengine/libsymengine_${version}.orig.tar.gz .
@@ -17,6 +24,6 @@ do
     sed -i 's:libsymengine (version) dist:libsymengine ('${version}'-'${dist}${build}') '${dist}':g' debian/changelog
     debuild -S
     cd ..
-    dput ppa:isuruf/symengine libsymengine_${version}-${dist}${build}_source.changes
+    dput ppa:symengine/ppa libsymengine_${version}-${dist}${build}_source.changes
 done
 
