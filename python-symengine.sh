@@ -1,6 +1,6 @@
 #! /bin/bash
 
-build=0
+build=2
 
 cd ../symengine.py
 git_ver=`git describe --tags`
@@ -34,6 +34,9 @@ do
     cp ../../symengine.py/setup.py setup.py
     sed -i 's:python-symengine (version) dist:python-symengine ('${version}'-'${dist}${build}') '${dist}':g' debian/changelog
     sed -i 's:libsymengine-dev:libsymengine-dev (>='$cpp_git_ver'):g' debian/control
+    if [ "$dist" == "wily" ]; then
+        sed -i 's/python3-dev/python3-dev, python3.5-dev/g' debian/control
+    fi
     debuild -S -sa
     cd ..
     dput ppa:symengine/ppa python-symengine_${version}-${dist}${build}_source.changes
