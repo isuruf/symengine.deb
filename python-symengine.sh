@@ -1,6 +1,6 @@
 #! /bin/bash
 
-build=1
+build=0
 
 cd ../symengine.py
 git_ver=`git describe --tags`
@@ -18,11 +18,13 @@ then
   cpp_git_ver=${cpp_git_ver:1};
 fi
 
-version=$git_ver-ubuntu0
+version=$git_ver-ubuntu2
 cd ../symengine.py
 tar -zcvf python-symengine_${version}.orig.tar.gz --exclude=".*" --exclude="benchmarks" *
 cd ../symengine.deb
-mv ../symengine.py/python-symengine_${version}.orig.tar.gz .
+if [ ! -f python-symengine_${version}.orig.tar.gz ]; then
+    mv ../symengine.py/python-symengine_${version}.orig.tar.gz .
+fi
 
 for dist in xenial trusty wily #precise
 do
